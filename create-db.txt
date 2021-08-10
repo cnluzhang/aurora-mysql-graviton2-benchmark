@@ -1,0 +1,10 @@
+aws rds create-db-cluster --db-cluster-identifier aurora-r5 \
+  --database-name sysbench \
+  --db-cluster-parameter-group-name aurora-mysql57-tuned \
+  --engine aurora-mysql --engine-version 5.7.mysql_aurora.2.10.0 \
+  --master-username aurora --master-user-password secret99 \
+  --db-subnet-group-name default --vpc-security-group-ids sg-ca6432a2
+
+aws rds create-db-instance --db-instance-identifier aurora-r5 \
+  --db-cluster-identifier aurora-r5 --engine aurora-mysql --db-instance-class db.r5.2xlarge \
+  --availability-zone cn-northwest-1b --enable-performance-insights

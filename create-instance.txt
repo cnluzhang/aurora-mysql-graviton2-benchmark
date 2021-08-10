@@ -1,0 +1,6 @@
+aws ec2 run-instances --image-id ami-010f676abe7d44960 --count 1 --instance-type c5.2xlarge \
+--key-name "Sean's KP" --subnet-id subnet-29d81052 --security-group-ids sg-0b3074dcd73519ec6 \
+--user-data file://userdata.txt --tag-specifications 'ResourceType=instance,Tags=[{Key=AZ,Value=cn-northwest-1a}]' \
+--query 'Instances[*].InstanceId' --output text
+
+aws ec2 describe-instances --instance-ids i-040e2ea384b747dd3 --query 'Reservations[*].Instances[*].PublicIpAddress' --output text
